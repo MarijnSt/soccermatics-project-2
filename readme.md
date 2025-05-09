@@ -22,3 +22,23 @@ I didn't expect Jack Grealish and Reiss Nelson to score this high as they're not
 We all know how skilled Trent Alexander-Arnold is on the ball and this graph only confirms that as he's by far the most dangerous defender in the league. Liverpool will surely miss him next season but maybe Ian Maatsen could be a good replacement? Even though he plays on the other side, as far as these metrics are concerned, he is a really interesting player.
 
 Kelleher might be the second choice behind Alisson but he could be a good option for teams looking for a goalkeeper who can do something with the ball. Sam Johnstone is another surprise in this list and I'm sure Crystal Palace would like to keep hold of him.
+
+## Top 10's
+
+Below are all the top 10's for both Danger Passes and Expected Danger if you're curious to see the rankings in a bit more detail
+
+![Forwards Danger Passes Top 10](./rankings/forward-danger-passes-per-90.png)
+
+![Forwards Expected Danger Top 10](./rankings/forward-xD-per-90.png)
+
+![Midfielders Danger Passes Top 10](./rankings/midfielder-danger-passes-per-90.png)
+
+![Midfielders Expected Danger Top 10](./rankings/midfielder-xD-per-90.png)
+
+![Defender Danger Passes Top 10](./rankings/defender-danger-passes-per-90.png)
+
+![Defender Expected Danger Top 10](./rankings/defender-xD-per-90.png)
+
+![Goalkeeper Danger Passes Top 10](./rankings/goalkeeper-danger-passes-per-90.png)
+
+![Goalkeeper Expected Danger Top 10](./rankings/goalkeeper-xD-per-90.png)
