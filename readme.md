@@ -24,3 +24,13 @@ How much danger a player is contributing in attacking moves. This figure is base
 ![Distribution of xD and Danger Passes per 90](./distribution_of_metrics_by_role.png)
 
 In terms of danger on the ball the distribution does make a lot of sense: goalkeepers are not very dangerous and neither are most defenders. The more dangerous players are in midfield and in attack. With midfielders edging out the attackers as they are often the players creating the opportunities for attackers to finish.
+
+## Danger Passes v Expecter Danger per 90
+
+![Danger Passes v Expecter Danger per 90](./dangerous-passes-per-90-vs-xd-per-90.png)
+
+No surprises seeing De Bruyne and Ødegaard top the list for the midfielders. When they're at their best, they elevate their teams to a higher level. With rumours of De Bruyne maybe wanting to stay in the Premier League next season, I'm sure a lot of teams would love to add all that danger to their attack.
+
+I didn't expect Jack Grealish and Reiss Nelson to score this high as they're not the highest profile forwards. Especially Reiss Nelson could be a good pickup for some of the top sides in the league as he's clearly ready for a next step in his career.
+
+We all know how dangerous Trent Alexander-Arnold is on the ball and this graph only confirms that as he's by far the most dangerous defender in the league. Liverpool will surely miss him next season but maybe Ian Maatsen could be a good replacement? Even though he plays on the other side, as far as these metrics are concerned he is a really interesting player.
