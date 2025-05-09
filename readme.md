@@ -33,4 +33,6 @@ No surprises seeing De Bruyne and Ødegaard top the list for the midfielders. Wh
 
 I didn't expect Jack Grealish and Reiss Nelson to score this high as they're not the highest profile forwards. Especially Reiss Nelson could be a good pickup for some of the top sides in the league as he's clearly ready for a next step in his career.
 
-We all know how dangerous Trent Alexander-Arnold is on the ball and this graph only confirms that as he's by far the most dangerous defender in the league. Liverpool will surely miss him next season but maybe Ian Maatsen could be a good replacement? Even though he plays on the other side, as far as these metrics are concerned he is a really interesting player.
+We all know how dangerous Trent Alexander-Arnold is on the ball and this graph only confirms that as he's by far the most dangerous defender in the league. Liverpool will surely miss him next season but maybe Ian Maatsen could be a good replacement? Even though he plays on the other side, as far as these metrics are concerned, he is a really interesting player.
+
+Kelleher might be the second choice behind Alisson but he clearly is a good option for teams looking for a goalkeeper who can be dangerous on the ball. Sam Johnstone is another surprise in this list and I'm sure Crystal Palace would like to keep hold of him.
