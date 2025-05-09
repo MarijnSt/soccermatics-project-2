@@ -23,4 +23,4 @@ How much danger a player is contributing in attacking moves. This figure is base
 
 ![Distribution of xD and Danger Passes per 90](./distribution_of_metrics_by_role.png)
 
-In terms of danger on the ball the distribution does make a lot of sense: goalkeepers are not very dangerous and neither are most defenders. The more dangerous players are in midfield and in attack. With midfielders edging out the attackers as they are often the players creating the most dangerous chances.
+In terms of danger on the ball the distribution does make a lot of sense: goalkeepers are not very dangerous and neither are most defenders. The more dangerous players are in midfield and in attack. With midfielders edging out the attackers as they are often the players creating the opportunities for attackers to finish.
