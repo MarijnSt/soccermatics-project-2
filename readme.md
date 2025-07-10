@@ -1,3 +1,24 @@
+# Soccermatics Pro - Project 2
+
+## Project assignment
+Create an Expected Danger model
+- Write code to identify all the passes made within 15 seconds of a shot
+- Use logistic regression to look at how start and end coordinates of these passes determines the probability that it will be followed by a shot. Think about how to transform the variables and use non-linear transformations of the variables when fitting the model
+- Use linear regression to look at how the start and end coordinates of the pass determine the probability of the shot being a goal
+- Combine these to give probability of a goal given the start and end coordinates of a pass
+- Rank players (grouped by position) in terms of their Expected Danger per 90. Compare that ranking to the number of danger passes made per 90
+
+*TODO: complete readme when project is done*
+
+## Technologies used
+
+## Filestructure in repository
+[./assets](assets)
+- Contains fonts, logo's and other assets used for visualisations
+
+[./notebooks](notebooks)
+- Contain notebooks used to explore data and set up
+
 # Project description
 
 In this project I used logistic and linear regression to determine the probability of passes being followed by shots and goals (within 15 seconds) by looking at the start and end locations of those passes. Passes that match these criteria are considered "Danger Passes".
