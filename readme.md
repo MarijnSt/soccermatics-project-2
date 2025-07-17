@@ -8,7 +8,37 @@ Create an Expected Danger model
 - Combine these to give probability of a goal given the start and end coordinates of a pass
 - Rank players (grouped by position) in terms of their Expected Danger per 90. Compare that ranking to the number of danger passes made per 90
 
+Notes from course
+- Min number of minutes: 300
+- Number of minutes to get full idea of a player: 900
+
+## Project feedback
+- Possession chains are in wyscout data
+- Assigning xG can be done more efficiently:
+    - Get shots and their xG
+    - Merge with passes on the possession id
+- Only use succesful passes
+    - Danger passes step can include them now
+- Logistic regression: use different model than xgboost
+- Feature selection: feature importance en minst belangrijke droppen
+- Visualisation: clearly show what x- and y-axis represent
+- Top 10s as an appendix is great!
+
 *TODO: complete readme when project is done*
+
+## Streamlit app
+Filters
+- Position
+- Team
+- Player
+
+Default plots
+- Scatter plot: highlight best players per position (xD v num of danger passes)
+- Heat map: danger map for one player? position? all players?
+
+Selected player
+- Highlight on scatter plot 
+- Show danger map for player
 
 ## Technologies used
 
