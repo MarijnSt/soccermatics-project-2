@@ -24,9 +24,7 @@ Notes from course
 - Visualisation: clearly show what x- and y-axis represent
 - Top 10s as an appendix is great!
 
-*TODO: complete readme when project is done*
-
-## Pro course xT Duels example
+## Pro course xT Duels voorbeeld
 xT berekenen na een duel
 
 Extra kolommen:
