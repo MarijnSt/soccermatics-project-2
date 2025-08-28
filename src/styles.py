@@ -3,12 +3,18 @@ from matplotlib import font_manager
 
 # Get the directory where this script is located
 script_dir = Path(__file__).parent
-# Go up one level to project root, then into assets
+
+# Set font paths
 font_path = script_dir.parent / 'assets' / 'Futura.ttc'
+font_light_path = script_dir.parent / 'assets' / 'Futura-light.ttf'
 
 # Load font
 font_manager.fontManager.addfont(str(font_path))
+font_manager.fontManager.addfont(str(font_light_path))
+
+# Create font properties
 prop = font_manager.FontProperties(fname=str(font_path))
+prop_light = font_manager.FontProperties(fname=str(font_light_path))
 
 # Create style config
 style_config = {
@@ -27,5 +33,6 @@ style_config = {
         'label': 8,
     },
     'alpha': 0.4,
-    'font_prop': prop
+    'font_prop': prop,
+    'font_prop_light': prop_light
 }
