@@ -24,6 +24,10 @@ style_config = {
         'general_stats': '#DC851F',
         'dribble_stats': '#6D98BA',
         'danger_dribble_stats': '#CA2E55',
+        'goalkeeper': '#226CE0',
+        'defender': '#E57A44',
+        'midfielder': '#388697',
+        'forward': '#B91372',
     },
     'sizes': {
         'h1': 18,
@@ -32,7 +36,7 @@ style_config = {
         'p': 12,
         'label': 8,
     },
-    'alpha': 0.4,
+    'alpha': 0.2,
     'font_prop': prop,
     'font_prop_light': prop_light
 }
