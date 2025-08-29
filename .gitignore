@@ -1,3 +1,4 @@
 wyscout_data/
 xT_duels.py
 __pycache__/
+generated_plots/*.png
