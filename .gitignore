@@ -1,3 +1,3 @@
 wyscout_data/
 __pycache__/
-generated_plots/*.png
+generated_plots/**/*.png
