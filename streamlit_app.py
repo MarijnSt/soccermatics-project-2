@@ -18,6 +18,8 @@ df_summary = pd.read_csv('data/summary.csv')
 # Display data
 #st.dataframe(df_summary)
 
+df_summary['point_size'] = 30
+
 # Create scatter plot
 fig = px.scatter(
     df_summary,
@@ -32,11 +34,14 @@ fig = px.scatter(
     },
     category_orders={'role': ['Goalkeeper', 'Defender', 'Midfielder', 'Forward']},
     opacity=style_config['alpha'],
+    size='point_size',
+    size_max=7.5,
     hover_name='short_name',
     hover_data={
         'xD_per_90': False,
         'danger_passes_per_90': False,
-        'role': False
+        'role': False,
+        'point_size': False
     },
     labels={
         'xD_per_90': 'Expected Danger (xD) per 90',
