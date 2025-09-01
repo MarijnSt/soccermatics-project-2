@@ -51,26 +51,24 @@ fig = px.scatter(
     height=600,
 )
 
+# Remove legend
 fig.update_layout(
     legend=dict(
-        title=dict(
-            text='Roles',
-            font=dict(
-                size=style_config['sizes']['h3'], 
-                color=style_config['colors']['dark']
-            ),
-            side='top center',
-        ),
-        x=0.5,
-        y=-0.25,
-        xanchor='center',
-        yanchor='top',
-        orientation='h',
-        font=dict( 
-            color=style_config['colors']['dark']
-        ),
+        visible=False,
+        # title=dict(
+        #     text='',
+        #     font=dict(
+        #         size=style_config['sizes']['h3'], 
+        #         color=style_config['colors']['dark']
+        #     ),
+        # ),
+        # y=0.5,
+        # yanchor='middle',
+        # font=dict( 
+        #     size=style_config['sizes']['h3'],
+        #     color=style_config['colors']['dark']
+        # ),
     ),
-    margin=dict(b=100)
 )
 
 st.plotly_chart(fig)
