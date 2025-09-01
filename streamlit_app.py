@@ -23,6 +23,16 @@ fig = px.scatter(
     x='xD_per_90',
     y='danger_passes_per_90',
     color='role',
+    hover_name='short_name',
+    hover_data={
+        'xD_per_90': False,
+        'danger_passes_per_90': False,
+        'role': False
+    },
+    labels={
+        'xD_per_90': 'Expected Danger (xD) per 90',
+        'danger_passes_per_90': 'Danger Passes per 90',
+    },
 )
 
 st.plotly_chart(fig)
