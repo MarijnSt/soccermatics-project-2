@@ -30,6 +30,7 @@ fig = px.scatter(
         'Defender': style_config['colors']['defender'],
         'Goalkeeper': style_config['colors']['goalkeeper']
     },
+    category_orders={'role': ['Goalkeeper', 'Defender', 'Midfielder', 'Forward']},
     opacity=style_config['alpha'],
     hover_name='short_name',
     hover_data={
