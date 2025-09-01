@@ -42,6 +42,8 @@ fig = px.scatter(
         'xD_per_90': 'Expected Danger (xD) per 90',
         'danger_passes_per_90': 'Danger Passes per 90',
     },
+    width=750,
+    height=600,
 )
 
 fig.update_layout(
