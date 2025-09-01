@@ -4,15 +4,13 @@ import numpy as np
 import plotly.express as px
 from src.styles import style_config
 
-print(style_config['colors'])
-
 # PAGE CONFIG
 st.set_page_config(
     page_title="Danger passers",
     page_icon="⚽️",
 )
 
-st.title('Most Dangerous Passers in the Premier League 2024/2025')
+st.title('Most dangerous passers in the Premier League 2024/2025')
 
 # Import data
 df_summary = pd.read_csv('data/summary.csv')
@@ -32,6 +30,7 @@ fig = px.scatter(
         'Defender': style_config['colors']['defender'],
         'Goalkeeper': style_config['colors']['goalkeeper']
     },
+    opacity=style_config['alpha'],
     hover_name='short_name',
     hover_data={
         'xD_per_90': False,
