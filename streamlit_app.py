@@ -18,8 +18,6 @@ df_summary = pd.read_csv('data/summary.csv')
 # Display data
 #st.dataframe(df_summary)
 
-df_summary['point_size'] = 30
-
 # Create role-to-color mapping
 role_colors = {
     'Forward': style_config['colors']['forward'],
@@ -41,9 +39,7 @@ for role in ['Goalkeeper', 'Defender', 'Midfielder', 'Forward']:
         mode='markers',
         marker=dict(
             color=role_colors[role],
-            size=role_data['point_size'],
-            sizemode='diameter',
-            sizeref=2.5,  # Adjust this to control point size
+            size=10,
             opacity=style_config['alpha']
         ),
         name=role,
