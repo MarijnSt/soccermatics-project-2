@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-import plotly.express as px
+import plotly.graph_objects as go
 from src.styles import style_config
 
 # PAGE CONFIG
@@ -20,55 +20,52 @@ df_summary = pd.read_csv('data/summary.csv')
 
 df_summary['point_size'] = 30
 
-# Create scatter plot
-fig = px.scatter(
-    df_summary,
-    x='xD_per_90',
-    y='danger_passes_per_90',
-    color='role',
-    color_discrete_map={
-        'Forward': style_config['colors']['forward'],
-        'Midfielder': style_config['colors']['midfielder'],
-        'Defender': style_config['colors']['defender'],
-        'Goalkeeper': style_config['colors']['goalkeeper']
-    },
-    category_orders={'role': ['Goalkeeper', 'Defender', 'Midfielder', 'Forward']},
-    opacity=style_config['alpha'],
-    size='point_size',
-    size_max=7.5,
-    hover_name='short_name',
-    hover_data={
-        'xD_per_90': False,
-        'danger_passes_per_90': False,
-        'role': False,
-        'point_size': False
-    },
-    labels={
-        'xD_per_90': 'Expected Danger (xD) per 90',
-        'danger_passes_per_90': 'Danger Passes per 90',
-    },
+# Create role-to-color mapping
+role_colors = {
+    'Forward': style_config['colors']['forward'],
+    'Midfielder': style_config['colors']['midfielder'],
+    'Defender': style_config['colors']['defender'],
+    'Goalkeeper': style_config['colors']['goalkeeper']
+}
+
+# Create the figure
+fig = go.Figure()
+
+# Add traces for each role
+for role in ['Goalkeeper', 'Defender', 'Midfielder', 'Forward']:
+    role_data = df_summary[df_summary['role'] == role]
+    
+    fig.add_trace(go.Scatter(
+        x=role_data['xD_per_90'],
+        y=role_data['danger_passes_per_90'],
+        mode='markers',
+        marker=dict(
+            color=role_colors[role],
+            size=role_data['point_size'],
+            sizemode='diameter',
+            sizeref=2.5,  # Adjust this to control point size
+            opacity=style_config['alpha']
+        ),
+        name=role,
+        hovertemplate='<b style="color:white">%{text}</b><br>' +
+                     '<span style="color:white">' + role + '</span><br>' +
+                     '<extra></extra>',
+        hoverlabel=dict(
+            bgcolor=role_colors[role],
+            font_color='white',
+            font_size=12
+        ),
+        text=role_data['short_name']
+    ))
+
+# Update layout
+fig.update_layout(
+    title='',
+    xaxis_title='Expected Danger (xD) per 90',
+    yaxis_title='Danger Passes per 90',
     width=750,
     height=600,
-)
-
-# Remove legend
-fig.update_layout(
-    legend=dict(
-        visible=False,
-        # title=dict(
-        #     text='',
-        #     font=dict(
-        #         size=style_config['sizes']['h3'], 
-        #         color=style_config['colors']['dark']
-        #     ),
-        # ),
-        # y=0.5,
-        # yanchor='middle',
-        # font=dict( 
-        #     size=style_config['sizes']['h3'],
-        #     color=style_config['colors']['dark']
-        # ),
-    ),
+    showlegend=False
 )
 
 st.plotly_chart(fig)
