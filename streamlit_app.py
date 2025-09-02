@@ -18,14 +18,6 @@ df_summary = pd.read_csv('data/summary.csv')
 # Display data
 #st.dataframe(df_summary)
 
-# Create role-to-color mapping
-role_colors = {
-    'Forward': style_config['colors']['forward'],
-    'Midfielder': style_config['colors']['midfielder'],
-    'Defender': style_config['colors']['defender'],
-    'Goalkeeper': style_config['colors']['goalkeeper']
-}
-
 # Create the figure
 fig = go.Figure()
 
@@ -38,7 +30,7 @@ for role in df_summary['role'].unique():
         y=role_data['danger_passes_per_90'],
         mode='markers',
         marker=dict(
-            color=role_colors[role],
+            color=style_config['colors'][role.lower()],
             size=10,
             opacity=style_config['alpha']
         ),
@@ -47,7 +39,7 @@ for role in df_summary['role'].unique():
                      '<span style="color:white">' + role + '</span><br>' +
                      '<extra></extra>',
         hoverlabel=dict(
-            bgcolor=role_colors[role],
+            bgcolor=style_config['colors'][role.lower()],
             font_color='white',
             font_size=12
         ),
