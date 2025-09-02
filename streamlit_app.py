@@ -30,7 +30,7 @@ role_colors = {
 fig = go.Figure()
 
 # Add traces for each role
-for role in ['Goalkeeper', 'Defender', 'Midfielder', 'Forward']:
+for role in df_summary['role'].unique():
     role_data = df_summary[df_summary['role'] == role]
     
     fig.add_trace(go.Scatter(
