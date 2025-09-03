@@ -69,6 +69,17 @@ for role in df_filtered['role'].unique():
             size=10,
             opacity=style_config['alpha']
         ),
+        selected=dict(
+            marker=dict(
+                opacity=1.0,
+                size=12
+            )
+        ),
+        unselected=dict(
+            marker=dict(
+                opacity=style_config['alpha'] - 0.1
+            )
+        ),
         name=role,
         hovertemplate='<b style="color:white">%{text}</b><br>' +
                      '<span style="color:white">' + role + '</span><br>' +
