@@ -28,27 +28,31 @@ def filter_player_stats(df_player_stats, role_filter, minutes_played_filter):
 
 # PAGE CONFIG
 st.set_page_config(
-    page_title="Danger passers",
+    page_title="Danger Passers",
     page_icon="⚽️",
 )
 
 st.title('Most dangerous passers in the Premier League 2024/2025')
 
+st.write('This app uses two passing metrics to analyse players:')
+st.write('1. Danger Passes: passes that end in a shot within 15 seconds.')
+st.write('2. Expected Danger (xD): the probability that a pass will be a danger pass and that the following shot will be a goal.')
+st.write('The total number of dangers passes and the accumulated xD for each player are then normalized to per 90 stats to be able to compare players with different playing times.')
+st.divider()
+
 # Import data
 df_summary = pd.read_csv('data/summary.csv')
 
 # Sidebar filters
-with st.sidebar:
-    st.subheader("Filter players")
-    role_filter = st.segmented_control(
-        "Role", 
-        ["All", "Goalkeepers", "Defenders", "Midfielders", "Forwards"],
-        default="All"
-    )
-    minutes_played_filter = st.number_input("Minimum minutes played", min_value=400, max_value=10000, value=400, step=1)
+role_filter_scatter = st.segmented_control(
+    "Role", 
+    ["All", "Goalkeepers", "Defenders", "Midfielders", "Forwards"],
+    default="All"
+)
+minutes_played_filter_scatter = st.number_input("Minimum minutes played", min_value=400, max_value=10000, value=400, step=1)
 
 # Filter data
-df_filtered = filter_player_stats(df_summary, role_filter, minutes_played_filter)
+df_filtered = filter_player_stats(df_summary, role_filter_scatter, minutes_played_filter_scatter)
 
 # Display data
 # st.dataframe(df_filtered)
@@ -123,7 +127,7 @@ if selected_points and 'selection' in selected_points:
         player_row = df_filtered[df_filtered['short_name'] == player_name].iloc[0]
 
         st.divider()
-        st.subheader(f"{player_name}")
+        st.header(f"{player_name}")
         
         # Display player information in columns
         col1, col2, col3 = st.columns(3)
