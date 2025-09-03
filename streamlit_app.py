@@ -43,7 +43,7 @@ st.divider()
 # Import data
 df_summary = pd.read_csv('data/summary.csv')
 
-# Sidebar filters
+# Scatter plot filters
 role_filter_scatter = st.segmented_control(
     "Role", 
     ["All", "Goalkeepers", "Defenders", "Midfielders", "Forwards"],
@@ -51,13 +51,13 @@ role_filter_scatter = st.segmented_control(
 )
 minutes_played_filter_scatter = st.number_input("Minimum minutes played", min_value=400, max_value=10000, value=400, step=1)
 
-# Filter data
+# Filter scatter plot data
 df_filtered = filter_player_stats(df_summary, role_filter_scatter, minutes_played_filter_scatter)
 
-# Display data
+# Display scatter plot data
 # st.dataframe(df_filtered)
 
-# Create the figure
+# Create scatter plot figure
 fig = go.Figure()
 
 # Add traces for each role
@@ -99,7 +99,7 @@ for role in df_filtered['role'].unique():
         customdata=role_data[['short_name', 'role', 'xD_per_90', 'danger_passes_per_90', 'minutes_played']].values
     ))
 
-# Update layout
+# Update scatter plot layout
 fig.update_layout(
     title='',
     xaxis_title='Expected Danger (xD) per 90',
@@ -109,13 +109,12 @@ fig.update_layout(
     showlegend=False
 )
 
-# Display the plot with selection enabled
+# Display scatter plot with selection enabled
 selected_points = st.plotly_chart(fig, on_select="rerun", selection_mode="points")
 
-# Show detailed information for selected players
+# Show detailed information for selected player in scatter plot
 if selected_points and 'selection' in selected_points:    
     for point in selected_points['selection']['points']:
-        # Get the custom data for this point
         player_data = point['customdata']
         player_name = player_data[0]
         player_role = player_data[1]
@@ -141,7 +140,6 @@ if selected_points and 'selection' in selected_points:
             st.metric("Danger Passes per 90", f"{danger_passes_per_90:.2f}")
         
         with col3:
-            # Add any other metrics you want to show
             if 'xD' in player_row:
                 st.metric("Total xD", f"{player_row['xD']:.2f}")
             if 'danger_passes' in player_row:
