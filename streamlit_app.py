@@ -51,8 +51,7 @@ with st.sidebar:
 df_filtered = filter_player_stats(df_summary, role_filter, minutes_played_filter)
 
 # Display data
-st.dataframe(df_filtered)
-
+# st.dataframe(df_filtered)
 
 # Create the figure
 fig = go.Figure()
@@ -81,7 +80,8 @@ for role in df_filtered['role'].unique():
             font_color='white',
             font_size=12
         ),
-        text=role_data['short_name']
+        text=role_data['short_name'],
+        customdata=role_data[['short_name', 'role', 'xD_per_90', 'danger_passes_per_90', 'minutes_played']].values
     ))
 
 # Update layout
@@ -94,4 +94,40 @@ fig.update_layout(
     showlegend=False
 )
 
-st.plotly_chart(fig)
+# Display the plot with selection enabled
+selected_points = st.plotly_chart(fig, on_select="rerun", selection_mode="points")
+
+# Show detailed information for selected players
+if selected_points and 'selection' in selected_points:    
+    for point in selected_points['selection']['points']:
+        # Get the custom data for this point
+        player_data = point['customdata']
+        player_name = player_data[0]
+        player_role = player_data[1]
+        xd_per_90 = player_data[2]
+        danger_passes_per_90 = player_data[3]
+        minutes_played = player_data[4]
+        
+        # Find the full player data
+        player_row = df_filtered[df_filtered['short_name'] == player_name].iloc[0]
+
+        st.divider()
+        st.subheader(f"{player_name}")
+        
+        # Display player information in columns
+        col1, col2, col3 = st.columns(3)
+        
+        with col1:
+            st.metric("Role", f"{player_role}")
+            st.metric("Minutes Played", f"{minutes_played:,}")
+        
+        with col2:
+            st.metric("xD per 90", f"{xd_per_90:.2f}")
+            st.metric("Danger Passes per 90", f"{danger_passes_per_90:.2f}")
+        
+        with col3:
+            # Add any other metrics you want to show
+            if 'xD' in player_row:
+                st.metric("Total xD", f"{player_row['xD']:.2f}")
+            if 'danger_passes' in player_row:
+                st.metric("Total Danger Passes", f"{player_row['danger_passes']}")
