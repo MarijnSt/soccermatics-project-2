@@ -37,6 +37,8 @@ for role in df_summary['role'].unique():
         name=role,
         hovertemplate='<b style="color:white">%{text}</b><br>' +
                      '<span style="color:white">' + role + '</span><br>' +
+                     '<span style="color:white"><b>%{x:.2f}</b> xD per 90</span><br>' +
+                     '<span style="color:white"><b>%{y:.2f}</b> danger passes per 90</span><br>' +
                      '<extra></extra>',
         hoverlabel=dict(
             bgcolor=style_config['colors'][role.lower()],
