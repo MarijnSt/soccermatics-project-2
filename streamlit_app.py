@@ -32,13 +32,14 @@ st.set_page_config(
     page_icon="⚽️",
 )
 
-st.title('Most dangerous passers in the Premier League 2024/2025')
+st.title('*Most dangerous passers in the Premier League 2024/2025*')
 
+st.write('')
 st.write('This app uses two passing metrics to analyse players:')
 st.write('1. Danger Passes: passes that end in a shot within 15 seconds.')
 st.write('2. Expected Danger (xD): the probability that a pass will be a danger pass and that the following shot will be a goal.')
 st.write('The total number of dangers passes and the accumulated xD for each player are then normalized to per 90 stats to be able to compare players with different playing times.')
-st.divider()
+st.write('')
 
 # Import data
 df_summary = pd.read_csv('data/summary.csv')

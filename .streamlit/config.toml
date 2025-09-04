@@ -1,4 +1,26 @@
+[server]
+enableStaticServing = true
+
+[[theme.fontFaces]]
+family="futura"
+url="app/static/fonts/Futura-Light.ttf"
+style="normal"
+weight=400
+
+[[theme.fontFaces]]
+family="futura"
+url="app/static/fonts/Futura-Medium.ttf"
+style="bold"
+weight=500
+
+[[theme.fontFaces]]
+family="futura"
+url="app/static/fonts/Futura-MediumItalic.ttf"
+style="italic"
+weight=500
+
 [theme]
+font="futura"
 primaryColor="#ca2e55"
 backgroundColor="#f2f4ee"
 secondaryBackgroundColor="#ecefe6"
