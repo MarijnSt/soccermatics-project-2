@@ -36,8 +36,8 @@ st.title('*Most dangerous passers in the Premier League 2024/2025*')
 
 st.write('')
 st.write('This app uses two passing metrics to analyse players:')
-st.write('1. Danger Passes: passes that end in a shot within 15 seconds.')
-st.write('2. Expected Danger (xD): the probability that a pass will be a danger pass and that the following shot will be a goal.')
+st.write('1. **Danger Passes**: passes that end in a shot within 15 seconds.')
+st.write('2. **Expected Danger (xD)**: the probability that a pass will be a danger pass and that the following shot will be a goal.')
 st.write('The total number of dangers passes and the accumulated xD for each player are then normalized to per 90 stats to be able to compare players with different playing times.')
 st.write('')
 
@@ -46,11 +46,11 @@ df_summary = pd.read_csv('data/summary.csv')
 
 # Scatter plot filters
 role_filter_scatter = st.segmented_control(
-    "Role", 
+    "*Role*", 
     ["All", "Goalkeepers", "Defenders", "Midfielders", "Forwards"],
     default="All"
 )
-minutes_played_filter_scatter = st.number_input("Minimum minutes played", min_value=400, max_value=10000, value=400, step=1)
+minutes_played_filter_scatter = st.number_input("*Minimum minutes played*", min_value=400, max_value=10000, value=400, step=1)
 
 # Filter scatter plot data
 df_filtered = filter_player_stats(df_summary, role_filter_scatter, minutes_played_filter_scatter)
@@ -126,11 +126,10 @@ if selected_points and 'selection' in selected_points:
         # Find the full player data
         player_row = df_filtered[df_filtered['short_name'] == player_name].iloc[0]
 
-        st.divider()
-        st.header(f"{player_name}")
+        st.subheader(f"*{player_name}*")
         
         # Display player information in columns
-        col1, col2, col3 = st.columns(3)
+        col1, col2, col3, col4 = st.columns(4)
         
         with col1:
             st.metric("Role", f"{player_role}")
@@ -145,7 +144,11 @@ if selected_points and 'selection' in selected_points:
                 st.metric("Total xD", f"{player_row['xD']:.2f}")
             if 'danger_passes' in player_row:
                 st.metric("Total Danger Passes", f"{player_row['danger_passes']}")
+        
+        with col4:
+            st.metric("Total xD", f"{player_row['xD']:.2f}") # goals
+            st.metric("Total Danger Passes", f"{player_row['danger_passes']}") # assists
 
 st.divider()
 
-st.header('Top 10 players')
+st.header('*Top 10 players*')
