@@ -5,7 +5,7 @@ from matplotlib import font_manager
 script_dir = Path(__file__).parent
 
 # Set font paths
-font_base_path = script_dir.parent / 'assets' / 'fonts'
+font_base_path = script_dir.parent / 'static' / 'fonts'
 light_font_path = font_base_path / 'Futura-Light.ttf'
 medium_font_path = font_base_path / 'Futura-Medium.ttf'
 medium_italic_font_path = font_base_path / 'Futura-MediumItalic.ttf'

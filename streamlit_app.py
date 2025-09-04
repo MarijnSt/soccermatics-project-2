@@ -144,3 +144,7 @@ if selected_points and 'selection' in selected_points:
                 st.metric("Total xD", f"{player_row['xD']:.2f}")
             if 'danger_passes' in player_row:
                 st.metric("Total Danger Passes", f"{player_row['danger_passes']}")
+
+st.divider()
+
+st.header('Top 10 players')
