@@ -188,7 +188,7 @@ col_dict = {
 df_sorted = df_filtered.sort_values(by=col_dict[metric_selection], ascending=True).tail(10).reset_index(drop=True)
 
 # Create ranking plot
-fig = create_ranking_plot(df_sorted, role_filter_scatter, minutes_played_filter_scatter, col_dict[metric_selection])
+fig = create_ranking_plot(df_sorted, role_filter_scatter, minutes_played_filter_scatter, col_dict[metric_selection], metric_selection)
 
 # Display ranking plot
 st.pyplot(fig)
