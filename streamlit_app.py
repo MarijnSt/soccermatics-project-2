@@ -57,7 +57,7 @@ minutes_played_filter_scatter = st.number_input("*Minimum minutes played*", min_
 df_filtered = filter_player_stats(df_summary, role_filter_scatter, minutes_played_filter_scatter)
 
 # Display scatter plot data
-# st.dataframe(df_filtered)
+st.dataframe(df_filtered)
 
 # Create scatter plot figure
 fig = go.Figure()
@@ -162,11 +162,33 @@ st.write('')
 st.write('Everyone likes to look at the rankings, so here you go!')
 st.write('Select any metric in the dataset and, based on the filters you applied before, you can see the top 10 players in the league.')
 st.write('')
+
+# Metric selection
+metric_selection = st.selectbox(
+    "*Metric*", 
+    [
+        "xD per 90", 
+        "Danger passes per 90",
+        "Total xD",
+        "Total number of danger passes",
+    ],
+    index=0
+)
+st.write('')
+
+# Get metric column name
+col_dict = {
+    "xD per 90": "xD_per_90",
+    "Danger passes per 90": "danger_passes_per_90",
+    "Total xD": "xD",
+    "Total number of danger passes": "danger_passes",
+}
+
 # Create top 10
-df_sorted = df_filtered.sort_values(by="xD_per_90", ascending=True).tail(10).reset_index(drop=True)
+df_sorted = df_filtered.sort_values(by=col_dict[metric_selection], ascending=True).tail(10).reset_index(drop=True)
 
 # Create ranking plot
-fig = create_ranking_plot(df_sorted, role_filter_scatter, minutes_played_filter_scatter, "xD_per_90")
+fig = create_ranking_plot(df_sorted, role_filter_scatter, minutes_played_filter_scatter, col_dict[metric_selection])
 
 # Display ranking plot
 st.pyplot(fig)

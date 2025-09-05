@@ -125,7 +125,7 @@ def create_ranking_plot(df, position_filter, minutes_played_filter, metric):
         main_ax.text(
             row[metric] - offset, 
             row['short_name'], 
-            f"{row[metric]:.3f}", 
+            f"{row[metric]:.3f}" if metric != 'danger_passes' else f"{row[metric]:.0f}", 
             fontproperties=style_config['fonts']['bold'],
             color=style_config['colors']['background'],
             va='center', 
