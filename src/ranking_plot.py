@@ -79,7 +79,7 @@ def create_ranking_plot(df, position_filter, minutes_played_filter, metric, metr
     heading_ax.text(
         0, 
         0, 
-        f'{metric_label} by players with at least {minutes_played_filter} minutes played', 
+        f'By {metric_label.lower()}', 
         ha='left',
         va='bottom'
     )
