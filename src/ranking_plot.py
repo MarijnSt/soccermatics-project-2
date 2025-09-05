@@ -44,16 +44,14 @@ def create_ranking_plot(df, position_filter, minutes_played_filter, metric, metr
 
     # Create figure
     fig = plt.figure(figsize=(12, 1 + 0.6 * len(df)))      # Increase height of figure based on number of rows in ranking
-    gs = fig.add_gridspec(3, 1, height_ratios=[0.1, 0.8, 0.1])       # 2 rows, 1 column, with height ratios for title, plot, legend
+    gs = fig.add_gridspec(2, 1, height_ratios=[0.1, 0.9])       # 2 rows, 1 column, with height ratios for title and plot
 
     # Init axis
     heading_ax = fig.add_subplot(gs[0])
     main_ax = fig.add_subplot(gs[1])
-    legend_ax = fig.add_subplot(gs[2])
 
     # Hide axis
     heading_ax.axis('off')
-    legend_ax.axis('off')
 
     # Hide spines
     main_ax.spines['top'].set_visible(False)
@@ -133,18 +131,5 @@ def create_ranking_plot(df, position_filter, minutes_played_filter, metric, metr
             va='center', 
             ha='right', 
         )
-
-    # Set legend text
-    xD_text = 'Expected Danger (xD) is a \'danger score\' that tells us how likely a pass is to create a real scoring threat.\nIt\'s calculated by multiplying the probability of a pass leading to a shot with the probability of that shot being a goal.'
-    danger_text = 'Danger passes are passes that end in a shot within 15 seconds.\nThese stats are standardized to 90 minutes played to be able to easily compare players with different playing times.'
-    legend_text = xD_text if metric == 'xD_per_90' else danger_text
-    legend_ax.text(
-        0, 
-        1, 
-        legend_text,
-        fontsize=style_config['sizes']['label'], 
-        ha='left', 
-        va='top'
-    )
 
     return fig
