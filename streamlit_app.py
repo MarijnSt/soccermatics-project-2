@@ -45,13 +45,31 @@ st.write('')
 # Import data
 df_summary = pd.read_csv('data/summary.csv')
 
-# Scatter plot filters
-role_filter_scatter = st.segmented_control(
-    "*Role*", 
-    ["All", "Goalkeepers", "Defenders", "Midfielders", "Forwards"],
-    default="All"
-)
-minutes_played_filter_scatter = st.number_input("*Minimum minutes played*", min_value=400, max_value=10000, value=400, step=1)
+# Metric map
+metric_map = {
+    "xD_per_90": "xD per 90",
+    "danger_passes_per_90": "Danger passes per 90",
+    "xD": "Total xD",
+    "danger_passes": "Total number of danger passes",
+    "minutes_played": "Number of minutes played",
+}
+
+# Sidebar filters
+with st.sidebar:
+    st.write('**Filter players**')
+    role_filter_scatter = st.segmented_control(
+        "*Role*", 
+        ["All", "Goalkeepers", "Defenders", "Midfielders", "Forwards"],
+        default="All"
+    )
+    minutes_played_filter_scatter = st.number_input("*Minimum minutes played*", min_value=400, max_value=10000, value=400, step=1)
+
+    metric_selection = st.selectbox(
+        "*Ranking metric*", 
+        metric_map.keys(),
+        format_func=lambda x: metric_map[x],
+        index=0
+    )
 
 # Filter scatter plot data
 df_filtered = filter_player_stats(df_summary, role_filter_scatter, minutes_played_filter_scatter)
@@ -160,23 +178,7 @@ st.header('*Top 10 players*')
 
 st.write('')
 st.write('Everyone likes to look at the rankings, so here you go!')
-st.write('Select any metric in the dataset and, based on the filters you applied before, you can see the top 10 players in the league.')
-st.write('')
-
-# Metric selection
-metric_map = {
-    "xD_per_90": "xD per 90",
-    "danger_passes_per_90": "Danger passes per 90",
-    "xD": "Total xD",
-    "danger_passes": "Total number of danger passes",
-}
-
-metric_selection = st.selectbox(
-    "*Metric*", 
-    metric_map.keys(),
-    format_func=lambda x: metric_map[x],
-    index=0
-)
+st.write('Below is a list of the top 10 players in the league based on the filters and ranking metric you selected in the sidebar.')
 st.write('')
 
 # Get metric column name
