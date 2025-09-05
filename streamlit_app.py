@@ -164,31 +164,28 @@ st.write('Select any metric in the dataset and, based on the filters you applied
 st.write('')
 
 # Metric selection
+metric_map = {
+    "xD_per_90": "xD per 90",
+    "danger_passes_per_90": "Danger passes per 90",
+    "xD": "Total xD",
+    "danger_passes": "Total number of danger passes",
+}
+
 metric_selection = st.selectbox(
     "*Metric*", 
-    [
-        "xD per 90", 
-        "Danger passes per 90",
-        "Total xD",
-        "Total number of danger passes",
-    ],
+    metric_map.keys(),
+    format_func=lambda x: metric_map[x],
     index=0
 )
 st.write('')
 
 # Get metric column name
-col_dict = {
-    "xD per 90": "xD_per_90",
-    "Danger passes per 90": "danger_passes_per_90",
-    "Total xD": "xD",
-    "Total number of danger passes": "danger_passes",
-}
 
 # Create top 10
-df_sorted = df_filtered.sort_values(by=col_dict[metric_selection], ascending=True).tail(10).reset_index(drop=True)
+df_sorted = df_filtered.sort_values(by=metric_selection, ascending=True).tail(10).reset_index(drop=True)
 
 # Create ranking plot
-fig = create_ranking_plot(df_sorted, role_filter_scatter, minutes_played_filter_scatter, col_dict[metric_selection], metric_selection)
+fig = create_ranking_plot(df_sorted, role_filter_scatter, minutes_played_filter_scatter, metric_selection, metric_map[metric_selection])
 
 # Display ranking plot
 st.pyplot(fig)
