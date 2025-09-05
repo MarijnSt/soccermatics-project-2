@@ -174,11 +174,12 @@ st.write('')
 st.write('')
 st.write('')
 st.write('')
-st.header('*Top 10 players*')
+st.header('*Player rankings*')
 
 st.write('')
 st.write('Everyone likes to look at the rankings, so here you go!')
 st.write('Below is a list of the top 10 players in the league based on the filters and ranking metric you selected in the sidebar.')
+st.write('Feel free to play around with the settings to see how the rankings change.')
 st.write('')
 
 # Get metric column name
