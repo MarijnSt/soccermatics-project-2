@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 import plotly.graph_objects as go
 from src.styles import style_config
+from src.ranking_plot import create_ranking_plot
 
 # Functions
 @st.cache_data
@@ -126,7 +127,7 @@ if selected_points and 'selection' in selected_points:
         # Find the full player data
         player_row = df_filtered[df_filtered['short_name'] == player_name].iloc[0]
 
-        st.subheader(f"*{player_name}*")
+        st.header(f"*{player_name}*")
         
         # Display player information in columns
         col1, col2, col3, col4 = st.columns(4)
@@ -149,6 +150,23 @@ if selected_points and 'selection' in selected_points:
             st.metric("Total xD", f"{player_row['xD']:.2f}") # goals
             st.metric("Total Danger Passes", f"{player_row['danger_passes']}") # assists
 
-st.divider()
 
+st.write('')
+st.write('')
+st.write('')
+st.write('')
+st.write('')
 st.header('*Top 10 players*')
+
+st.write('')
+st.write('Everyone likes to look at the rankings, so here you go!')
+st.write('Select any metric in the dataset and, based on the filters you applied before, you can see the top 10 players in the league.')
+st.write('')
+# Create top 10
+df_sorted = df_filtered.sort_values(by="xD_per_90", ascending=True).tail(10).reset_index(drop=True)
+
+# Create ranking plot
+fig = create_ranking_plot(df_sorted, role_filter_scatter, minutes_played_filter_scatter, "xD_per_90")
+
+# Display ranking plot
+st.pyplot(fig)
