@@ -165,8 +165,8 @@ if selected_points and 'selection' in selected_points:
                 st.metric("Total Danger Passes", f"{player_row['danger_passes']}")
         
         with col4:
-            st.metric("Total xD", f"{player_row['xD']:.2f}") # goals
-            st.metric("Total Danger Passes", f"{player_row['danger_passes']}") # assists
+            st.metric("Goals", f"{player_row['goals']:.0f}") # goals
+            st.metric("Assists", f"{player_row['assists']:.0f}") # assists
 
 
 st.write('')
