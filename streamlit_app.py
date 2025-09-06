@@ -52,6 +52,8 @@ metric_map = {
     "xD": "Total xD",
     "danger_passes": "Total number of danger passes",
     "minutes_played": "Number of minutes played",
+    "goals": "Goals",
+    "assists": "Assists",
 }
 
 # Sidebar filters
