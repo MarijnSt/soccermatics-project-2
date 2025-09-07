@@ -5,7 +5,7 @@ import matplotlib.image as mpimg
 from pathlib import Path
 
 
-def create_ranking_plot(df, position_filter, minutes_played_filter, metric, metric_label):
+def create_ranking_plot(df, metric, metric_label):
     """
     Create a ranking plot for a given metric and filters.
 
@@ -13,10 +13,6 @@ def create_ranking_plot(df, position_filter, minutes_played_filter, metric, metr
     ----------
     df: pd.DataFrame
         The dataframe with the players to plot.
-    position_filter: list
-        List of positions to include in the plot.
-    minutes_played_filter: int
-        The minimum minutes played to include in the plot.
     metric: str
         The metric to plot.
     metric_label: str

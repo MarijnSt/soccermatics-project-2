@@ -7,7 +7,7 @@ from src.ranking_plot import create_ranking_plot
 
 # Functions
 @st.cache_data
-def filter_player_stats(df_player_stats, role_filter, minutes_played_filter):
+def filter_player_stats(df_player_stats, role_filter, minutes_played_filter, goals_filter, assists_filter):
     df = df_player_stats.copy()
 
     # Role filter
@@ -24,6 +24,14 @@ def filter_player_stats(df_player_stats, role_filter, minutes_played_filter):
     # Minutes played filter
     if minutes_played_filter:
         df = df[df["minutes_played"] >= minutes_played_filter]
+    
+    # Goals filter
+    if goals_filter:
+        df = df[df["goals"] >= goals_filter]
+    
+    # Assists filter
+    if assists_filter:
+        df = df[df["assists"] >= assists_filter]
 
     return df
 
@@ -59,12 +67,18 @@ metric_map = {
 # Sidebar filters
 with st.sidebar:
     st.write('**Filter players**')
-    role_filter_scatter = st.segmented_control(
+
+    role_filter = st.segmented_control(
         "*Role*", 
         ["All", "Goalkeepers", "Defenders", "Midfielders", "Forwards"],
         default="All"
     )
-    minutes_played_filter_scatter = st.number_input("*Minimum minutes played*", min_value=400, max_value=10000, value=400, step=1)
+
+    minutes_played_filter = st.number_input("*Minimum minutes played*", min_value=400, max_value=10000, value=400, step=1)
+
+    goals_filter = st.number_input("*Minimum goals*", min_value=0, max_value=100, value=0, step=1)
+    
+    assists_filter = st.number_input("*Minimum assists*", min_value=0, max_value=100, value=0, step=1)
 
     metric_selection = st.selectbox(
         "*Ranking metric*", 
@@ -74,10 +88,10 @@ with st.sidebar:
     )
 
 # Filter scatter plot data
-df_filtered = filter_player_stats(df_summary, role_filter_scatter, minutes_played_filter_scatter)
+df_filtered = filter_player_stats(df_summary, role_filter, minutes_played_filter, goals_filter, assists_filter)
 
 # Display scatter plot data
-st.dataframe(df_filtered)
+#st.dataframe(df_filtered)
 
 # Create scatter plot figure
 fig = go.Figure()
@@ -190,7 +204,7 @@ st.write('')
 df_sorted = df_filtered.sort_values(by=metric_selection, ascending=True).tail(10).reset_index(drop=True)
 
 # Create ranking plot
-fig = create_ranking_plot(df_sorted, role_filter_scatter, minutes_played_filter_scatter, metric_selection, metric_map[metric_selection])
+fig = create_ranking_plot(df_sorted, metric_selection, metric_map[metric_selection])
 
 # Display ranking plot
 st.pyplot(fig)
