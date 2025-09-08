@@ -140,7 +140,7 @@ with st.sidebar:
 df_filtered = filter_player_stats(df_summary)
 
 # Display data
-st.dataframe(df_filtered)
+# st.dataframe(df_filtered)
 
 # Create scatter plot figure
 fig = go.Figure()
