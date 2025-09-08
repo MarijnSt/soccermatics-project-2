@@ -116,7 +116,7 @@ with st.sidebar:
     )
 
     # Reset filters button (moved to bottom)
-    if st.button("🔄 Reset Filters", type="secondary", use_container_width=True):
+    if st.button("Reset Filters", type="secondary", use_container_width=True):
         # Reset to default values
         st.session_state.filters = {
             'role': "All",
@@ -127,20 +127,14 @@ with st.sidebar:
         }
         st.rerun()
 
-    # Update session state when values change
-    if (st.session_state.filters['role'] != role_filter or
-        st.session_state.filters['minutes'] != minutes_played_filter or
-        st.session_state.filters['goals'] != goals_filter or
-        st.session_state.filters['assists'] != assists_filter or
-        st.session_state.filters['metric'] != metric_selection):
-        
-        st.session_state.filters.update({
-            'role': role_filter,
-            'minutes': minutes_played_filter,
-            'goals': goals_filter,
-            'assists': assists_filter,
-            'metric': metric_selection
-        })
+    # Update session state when values change        
+    st.session_state.filters.update({
+        'role': role_filter,
+        'minutes': minutes_played_filter,
+        'goals': goals_filter,
+        'assists': assists_filter,
+        'metric': metric_selection
+    })
 
 # Filter data
 df_filtered = filter_player_stats(df_summary)
