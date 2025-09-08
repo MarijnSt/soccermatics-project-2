@@ -7,6 +7,9 @@ Data was provided by Wyscout.
 ## Streamlit app
 You can find a hosted version of the streamlit app [here](https://expected-danger.streamlit.app/)
 
+## Linkedin post
+Presenting data analysis to people who don't understand it can be tricky. I like to keep it as simple as possible and post a mini report on Linkedin as I would present it to coaches. You can find my post about this project [here](https://www.linkedin.com/in/marijn-stammeleer/)
+
 ## Technologies used
 - **Scikit-learn** for danger pass and xG models
 - **Streamlit** to create and host the app
