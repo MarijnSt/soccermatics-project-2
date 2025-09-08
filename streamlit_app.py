@@ -5,7 +5,7 @@ import plotly.graph_objects as go
 from src.styles import style_config
 from src.ranking_plot import create_ranking_plot
 
-# Functions
+# Filter summarydataframe
 def filter_player_stats(df_player_stats):
     df = df_player_stats.copy()
 
