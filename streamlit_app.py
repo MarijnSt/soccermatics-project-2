@@ -6,7 +6,6 @@ from src.styles import style_config
 from src.ranking_plot import create_ranking_plot
 
 # Functions
-@st.cache_data
 def filter_player_stats(df_player_stats):
     df = df_player_stats.copy()
 
@@ -78,17 +77,6 @@ if 'filters' not in st.session_state:
 with st.sidebar:
     st.write('**Filter players**')
 
-    # Reset filters button
-    if st.button("🔄 Reset Filters", type="secondary", use_container_width=True):
-        # Reset to default values
-        st.session_state.filters = {
-            'role': "All",
-            'minutes': 400,
-            'goals': 0,
-            'assists': 0,
-            'metric': "xD_per_90"
-        }
-
     # Create widgets using session state values
     role_filter = st.segmented_control(
         "*Role*", 
@@ -127,20 +115,38 @@ with st.sidebar:
         index=list(metric_map.keys()).index(st.session_state.filters['metric'])
     )
 
-    # Update session state when values change
-    st.session_state.filters.update({
-        'role': role_filter,
-        'minutes': minutes_played_filter,
-        'goals': goals_filter,
-        'assists': assists_filter,
-        'metric': metric_selection
-    })
+    # Reset filters button (moved to bottom)
+    if st.button("🔄 Reset Filters", type="secondary", use_container_width=True):
+        # Reset to default values
+        st.session_state.filters = {
+            'role': "All",
+            'minutes': 400,
+            'goals': 0,
+            'assists': 0,
+            'metric': "xD_per_90"
+        }
+        st.rerun()
 
-# Filter scatter plot data
+    # Update session state when values change
+    if (st.session_state.filters['role'] != role_filter or
+        st.session_state.filters['minutes'] != minutes_played_filter or
+        st.session_state.filters['goals'] != goals_filter or
+        st.session_state.filters['assists'] != assists_filter or
+        st.session_state.filters['metric'] != metric_selection):
+        
+        st.session_state.filters.update({
+            'role': role_filter,
+            'minutes': minutes_played_filter,
+            'goals': goals_filter,
+            'assists': assists_filter,
+            'metric': metric_selection
+        })
+
+# Filter data
 df_filtered = filter_player_stats(df_summary)
 
-# Display scatter plot data
-#st.dataframe(df_filtered)
+# Display data
+st.dataframe(df_filtered)
 
 # Create scatter plot figure
 fig = go.Figure()
