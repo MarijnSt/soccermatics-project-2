@@ -20,7 +20,7 @@ style="italic"
 weight=500
 
 [theme]
-font="futura"
+font="futura, sans-serif"
 primaryColor="#ca2e55"
 backgroundColor="#f2f4ee"
 secondaryBackgroundColor="#ecefe6"
